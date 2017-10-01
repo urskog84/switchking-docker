@@ -1,0 +1,17 @@
+version: "3.0"
+
+services:
+  switchking:
+    build: ./switchking
+    hostname: switchking
+    container_name: switchking
+    stdin_open: true
+    tty: true
+    entrypoint: /bin/sh
+    ports:
+     - "8080:8080"
+     - "8800:8800"
+   # devices:
+   #
+     - "/dev/bus/usb/003/002:/dev/ttyUSB0"
+     
