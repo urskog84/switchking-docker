@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-MAINTAINER petter.andersson@gmail.com 
+MAINTAINER karl.petter.fors@gmail.com 
 
 
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
