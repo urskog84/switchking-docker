@@ -19,3 +19,20 @@ $lsusb -D /dev/bus/usb/003/002 | grep -F "Device:"
 
 
 --build-arg <varname>=<value>
+
+
+
+docker run --privilege -p 8800:8800 -p 8080:8080 --device=/dev/bus/usb/003 -it 505114427620  /bin/bash
+mono /bin/switchking/Bin/SwitchKing.exe daemon 8080 8800
+
+
+
+
+docker run -p 8800:8800 -p 8080:8080 -device=/dev/bus/usb/003/ --name=switching -it 505114427620  /bin/bash
+
+
+docker run --privileged -p 8800:8800 -p 8080:8080 -v /dev/bus/usb/003:/dev/bus/usb/003 -it d6fc5259ca44  /bin/bash
+
+
+
+docker run --privileged -p 8800:8800 -p 8080:8080 -v /dev/bus/usb/003:/dev/bus/usb/003 it /bin/bash d11fdb305d14
