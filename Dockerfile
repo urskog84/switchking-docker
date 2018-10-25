@@ -18,7 +18,9 @@ RUN unzip /tmp/switchking.zip -d /bin/switchking/
 
 
 # Import Existing Database
-COPY ./DB/switchKing.server.db3 /bin/switchking/Bin/DB/switchKing.server.db3
+#COPY ./DB/switchKing.server.db3 /bin/switchking/Bin/DB/switchKing.server.db3
+
+
 
 
 # Start With new database
@@ -27,13 +29,15 @@ COPY ./DB/switchKing.server.db3 /bin/switchking/Bin/DB/switchKing.server.db3
 
 RUN echo "deb-src http://download.telldus.com/debian/ stable main" | sudo tee -a /etc/apt/sources.list
 RUN echo "deb http://download.telldus.com/debian/ stable main" | sudo tee -a /etc/apt/sources.list
-RUN wget -q http://download.telldus.se/debian/telldus-public.key -O- | sudo apt-key add -
+RUN wget -q http://download.telldus.com/debian/telldus-public.key -O- | sudo apt-key add -
 
 
 RUN apt-get update
 RUN apt-get install -y telldus-core libftdi1 libconfuse0 libconfuse-dev --fix-missing
 
 COPY tellstick.conf /etc/tellstick.conf
+
+VOLUME "/bin/switchking/Bin/DB/local/"
 
 #Sart Tedusd services
 #ENTRYPOINT  ./etc/init.d/telldusd start && mono /bin/switchking/Bin/SwitchKing.exe daemon 8080 8800 && /bin/bash
